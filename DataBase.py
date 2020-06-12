@@ -1,6 +1,7 @@
 # DataBase class
 
 import sqlite3
+import pyinputplus as pyip
 
 class DataBase():
     def __init__(self, name):
@@ -8,12 +9,22 @@ class DataBase():
         con = sqlite3.connect(name+'.db')
         con.row_factory = sqlite3.Row
         cur = con.cursor()
+        cur.execute('SHOW DATABASES;')
 
 
-    def showTables(self):
+    def createTable(self):
         con = sqlite3.connect(self.name+'.db')
         con.row_factory = sqlite3.Row
         cur = con.cursor()
-        cur.execute('SELECT name FROM ' + self.name + ' WHERE type = "table"')
-        tables = cur.fetchall()
-        print(tables)
+
+        print('1. CREATE FROM DB STUDIO LEVEL') 
+        print('2. CREATE BY SQL QUERY')
+        userChoice = pyip.inputChoice(['1', '2'], ('(1/2)'))
+        if userChoice == '1':
+            # HERE SHOULD BE CREATE TABLE OBJECT
+            tableName = pyip.inputStr('Table name:')
+            columnsAmount = pyip.inputInt('Columns amount:')
+            columns = []
+
+        
+        
