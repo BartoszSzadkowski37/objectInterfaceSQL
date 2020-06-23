@@ -87,5 +87,4 @@ def listDBs():
 #FUNCTION FOR MANAGING DB
 def manageDB(DBName):
     DB = DataBase(DBName)
-    DB.showTables()
-
+    DB.createTable()
